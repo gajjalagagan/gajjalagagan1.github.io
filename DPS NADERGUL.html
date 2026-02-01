@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPS Nadergul | Green Excellence</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+    background:linear-gradient(-45deg,#041b0f,#0a3d2e,#043d1a,#02140b);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+    color:#ffffff;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Floating shapes */
+.shape{
+    position:fixed;
+    width:220px;
+    height:220px;
+    background:#3cff9b33;
+    filter:blur(90px);
+    animation:float 14s infinite linear;
+    z-index:-1;
+}
+.shape:nth-child(1){top:10%; left:5%;}
+.shape:nth-child(2){bottom:10%; right:5%; animation-duration:20s;}
+
+@keyframes float{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-90px)}
+    100%{transform:translateY(0)}
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 60px;
+    background:rgba(0,40,20,0.7);
+    backdrop-filter:blur(14px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    height:42px;
+    width:auto;
+    filter:drop-shadow(0 0 12px rgba(60,255,155,0.6));
+    transition:0.4s;
+}
+
+.logo img:hover{
+    transform:scale(1.08);
+    filter:drop-shadow(0 0 18px rgba(60,255,155,0.9));
+}
+
+.logo span{
+    font-size:20px;
+    font-weight:600;
+    color:#3cff9b;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#3cff9b;
+}
+
+/* Hero */
+.hero{
+    height:100vh;
+    background:url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1") center/cover fixed;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,30,15,0.7);
+}
+
+.hero-content{
+    position:relative;
+    max-width:900px;
+    animation:heroZoom 2s ease;
+}
+
+@keyframes heroZoom{
+    from{opacity:0; transform:scale(1.15)}
+    to{opacity:1; transform:scale(1)}
+}
+
+/* HERO LOGO */
+.hero-logo{
+    width:120px;
+    margin-bottom:20px;
+    filter:drop-shadow(0 0 20px rgba(60,255,155,0.8));
+    animation:logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+.hero h2{
+    font-size:54px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+/* Sections */
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:60px;
+    color:#3cff9b;
+}
+
+/* Cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    padding:35px;
+    border-radius:26px;
+    transition:0.6s;
+    transform-style:preserve-3d;
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover{
+    transform:rotateY(10deg) rotateX(8deg) scale(1.05);
+    box-shadow:0 35px 90px rgba(60,255,155,0.35);
+}
+
+.card h3{
+    color:#3cff9b;
+    margin-bottom:15px;
+}
+
+.card a {
+    color:#3cff9b;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.card a:hover {
+    color:#ffffff;
+}
+
+/* Split */
+.split{
+    display:flex;
+    gap:50px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.split img{
+    width:100%;
+    max-width:460px;
+    border-radius:32px;
+    transition:0.7s;
+    opacity:0;
+    transform:scale(0.85);
+}
+
+.split img.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+.split div{flex:1;}
+
+/* Sports Grid */
+.sports-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.sport-card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    padding:30px;
+    border-radius:26px;
+    text-align:center;
+    transition:0.6s;
+    transform-style:preserve-3d;
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.sport-card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.sport-card:hover{
+    transform:rotateY(8deg) scale(1.05);
+    box-shadow:0 25px 70px rgba(60,255,155,0.3);
+}
+
+.sport-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+.sport-card h4{
+    color:#3cff9b;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+/* Achievements */
+.slider{
+    overflow:hidden;
+}
+
+.track{
+    display:flex;
+    gap:30px;
+    animation:slide 22s linear infinite;
+}
+
+.track div{
+    min-width:300px;
+    background:linear-gradient(135deg,#3cff9b44,#ffffff12);
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+}
+
+@keyframes slide{
+    from{transform:translateX(0)}
+    to{transform:translateX(-100%)}
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:40px;
+    background:#001a0d;
+    opacity:0.9;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    nav{padding:15px 30px;}
+    .hero h2{font-size:36px;}
+    .split{flex-direction:column;}
+    .split img{margin-bottom:30px;}
+    .sports-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+<div class="shape"></div>
+<div class="shape"></div>
+
+<nav>
+    <div class="logo">
+        <img src="logo.jpg" alt="DPS Nadergul Logo">
+        <span>DPS Nadergul</span>
+    </div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#sports">Sports</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <img src="logo.jpg" class="hero-logo" alt="DPS Nadergul Logo">
+        <h2>Delhi Public School, Nadergul</h2>
+        <p>Green Excellence in Education, Sports & Global Leadership</p>
+    </div>
+</section>
+
+<section id="about">
+<h2 class="section-title">About Us</h2>
+<div class="cards">
+<div class="card">
+    <h3>🎯 Vision</h3>
+    <p>Creating responsible global citizens with strong values.</p>
+    <br>
+    <a href="https://www.dpsnadergul.in/management/" target="_blank">Management</a> | 
+    <a href="https://saitheonepiece-bot.github.io/campuscore/index.html" target="_blank">CampusCore Portal</a>
+</div>
+<div class="card"><h3>🏫 Campus</h3><p>Eco-friendly, modern infrastructure with smart learning.</p></div>
+<div class="card"><h3>⚖️ Discipline</h3><p>Balanced growth in academics, ethics, and leadership.</p></div>
+</div>
+</section>
+
+<section id="academics">
+<h2 class="section-title">Academics</h2>
+<div class="split">
+<img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
+<div>
+<p>DPS Nadergul ensures academic brilliance through innovation and holistic learning.Delhi Public School Nadergul offers strong academic services with experienced teachers, smart classrooms, well-equipped laboratories, digital learning tools, regular assessments, doubt-clearing sessions, and personalized guidance. The curriculum balances CBSE standards with critical thinking, projects, and skill development, helping students achieve excellence and confidence through consistent mentoring and academic support systems.
+</p>
+</div>
+</div>
+</section>
+
+<section id="sports">
+<h2 class="section-title">Sports Excellence</h2>
+<div class="split">
+<div>
+<p>International-level training and facilities nurture champions. Featuring world-class coaching in multiple disciplines.</p>
+</div>
+</div>
+
+<div class="sports-grid">
+    <div class="sport-card">
+        <img src="CRICKET.jpg" alt="Cricket">
+        <h4>🏏 Cricket</h4>
+        <p>M.S. Dhoni Cricket Academy with professional coaching.</p>
+    </div>
+    <div class="sport-card">
+        <img src="FOOTBALL.jpg" alt="Football">
+        <h4>⚽ Football</h4>
+        <p>Full-size turf field with Hyderabad Football Association training.</p>
+    </div>
+    <div class="sport-card">
+        <img src="BASKETBALL.jpg" alt="Basketball">
+        <h4>🏀 Basketball</h4>
+        <p>International standard indoor & outdoor courts.</p>
+    </div>
+    <div class="sport-card">
+        <img src="SWIMMING.jpg" alt="Swimming">
+        <h4>🏊 Swimming</h4>
+        <p>Olympic-size pool with certified coaches.</p>
+    </div>
+    <div class="sport-card">
+        <img src="ATHLETICS.jpg" alt="Athletics">
+        <h4>🏃 Athletics</h4>
+        <p>400m track for sprints, jumps & field events.</p>
+    </div>
+    <div class="sport-card">
+        <img src="ARCHERY.jpg" alt="Archery">
+        <h4>🏹 Archery</h4>
+        <p>International range with professional guidance.</p>
+    </div>
+</div>
+</section>
+
+<section id="achievements">
+<h2 class="section-title">Achievements</h2>
+<div class="slider">
+<div class="track">
+<div>🏆 Top 10 School in India</div>
+<div>🌍 International Sports Excellence</div>
+<div>📘 Academic Distinction Award</div>
+<div>🥇 CBSE Board Toppers</div>
+<div>🎨 Arts & Culture Champions</div>
+<div>🔬 Science Olympiad Winners</div>
+</div>
+</div>
+</section>
+
+<footer>
+    <p>&copy; 2026 DPS Nadergul. All rights reserved.</p>
+</footer>
+
+<script>
+    // Simple scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    });
+    
+    document.querySelectorAll('.card, .split img, .sport-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
